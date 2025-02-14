@@ -13,14 +13,14 @@
 }
 
 body{
-    background-color: #FFF5E4;
+    background-color: #741d27;
     min-height: 100vh;
     display: flex;
     flex-direction: column; /* Change the direction to column */
     align-items: center;
     justify-content: flex-start; /* Align items to the start of the container */
     overflow: hidden;
-	color: #FF9494;
+	color: #d2cccc;
 	font-family: courier;
 }
 
@@ -35,7 +35,10 @@ body{
 }
 
 .flower{
-    position: relative;
+    position: absolute; /* Ensure the flower is positioned absolutely */
+    top: 60%; /* Adjust this value to move the flower down */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .flower__glass{

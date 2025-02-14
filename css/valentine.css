@@ -37,3 +37,21 @@ img {
   border: 2px solid #ff9494;
   box-shadow: 1px 1px 2px #ffe3e1;
 }
+
+/* Styles for dynamic messages */
+#messageContainer {
+  margin-top: 20px;
+}
+
+.dynamicMessage {
+  color: #ff9494; /* Red color for prominence */
+  font-size: 1.5em; /* Increase font size */
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Optional: Add a fade-in effect for messages */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

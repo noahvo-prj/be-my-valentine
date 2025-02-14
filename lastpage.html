@@ -2,61 +2,208 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/flower.css" />
+    <title>Envelope with Hearts</title>
+    <!-- Google Fonts: Dancing Script for a romantic look -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+    />
+    <style>
+      /* Basic reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body setup */
+      body {
+        background: #f7d7d7; /* Light pink background */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Hide scrollbars if hearts float out of view */
+        font-family: "Dancing Script", cursive; /* Cursive font for everything */
+      }
+
+      /* Container for envelope, hearts, and text */
+      .container {
+        position: relative;
+        width: 500px;
+        height: 600px;
+        text-align: center;
+      }
+
+      /* Envelope styling */
+      .envelope {
+        position: absolute;
+        bottom: 250px; /* Enough space for text below */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 350px;
+        height: 200px;
+        background: #c8a77a; /* Brownish color for the envelope body */
+        border-radius: 0 0 8px 8px;
+        z-index: 1;
+        overflow: hidden; /* So hearts appear to float out from inside */
+      }
+      /* Envelope flap with a 3D tilt effect */
+      .envelope::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: #c8a77a;
+        transform-origin: top;
+        transform: perspective(300px) rotateX(30deg);
+        border-radius: 0 0 8px 8px;
+      }
+
+      /* HEARTS (multiple animated hearts) */
+      .heart {
+        position: absolute;
+        bottom: 350px; /* Same as envelope bottom + envelope height offset */
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: #ff5e5e;
+        transform: translate(-50%, 0) rotate(45deg) scale(1);
+        border-radius: 50% 50% 0 0;
+        animation: floatUp 4s ease-in-out infinite;
+        opacity: 0;
+      }
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: #ff5e5e;
+        border-radius: 50%;
+      }
+      .heart::before {
+        left: -50%;
+      }
+      .heart::after {
+        top: -50%;
+      }
+
+      /* Positioning and animation delay for multiple hearts */
+      .heart1 {
+        animation-delay: 0s;
+        margin-left: -90px; /* Shift left from center */
+      }
+      .heart2 {
+        animation-delay: 0.5s;
+        margin-left: -40px;
+      }
+      .heart3 {
+        animation-delay: 1s;
+        margin-left: 10px;
+      }
+      .heart4 {
+        animation-delay: 1.5s;
+        margin-left: 60px;
+      }
+      .heart5 {
+        animation-delay: 2s;
+        margin-left: -120px;
+      }
+      .heart6 {
+        animation-delay: 2.5s;
+        margin-left: 90px;
+      }
+      .heart7 {
+        animation-delay: 3s;
+        margin-left: -10px;
+      }
+      .heart8 {
+        animation-delay: 3.5s;
+        margin-left: 120px;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translate(-50%, 0) rotate(45deg) scale(0.7);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+          transform: translate(-50%, -10px) rotate(45deg) scale(1);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -300px) rotate(45deg) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      /* MESSAGE at bottom with a letter wave animation */
+      .message {
+      position: absolute;
+      bottom: 0px;
+      left: 0%; /* Move the text to the left by setting a smaller percentage */
+      transform: none; /* Remove horizontal centering */
+      font-size: 65px;
+      font-weight: 700;
+      color: #ff5e5e;
+    }
+
+      .message span {
+        display: inline-block;
+        animation: waveText 1.5s ease-in-out infinite;
+      }
+
+      @keyframes waveText {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
-    <div class="flower">
-      <div class="f-wrapper">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
-          ></div>
-        </div>
-      </div>
+    <div class="container">
+      <!-- Envelope -->
+      <div class="envelope"></div>
 
-      <div class="f-wrapper f-wrapper--2">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
-          ></div>
-        </div>
-      </div>
+      <!-- Multiple hearts floating out of the envelope -->
+      <div class="heart heart1"></div>
+      <div class="heart heart2"></div>
+      <div class="heart heart3"></div>
+      <div class="heart heart4"></div>
+      <div class="heart heart5"></div>
+      <div class="heart heart6"></div>
+      <div class="heart heart7"></div>
+      <div class="heart heart8"></div>
 
-      <div class="f-wrapper f-wrapper--3">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
-          ></div>
-        </div>
-      </div>
-      <div class="flower__glass"></div>
+      <!-- Message (each letter will get a wave effect via JS) -->
+      <div class="message" id="messageText">Thank you for being my valentine </div>
     </div>
+
+    <script>
+      // Wrap each character of the message in a <span> for the wave animation effect
+      const message = document.getElementById("messageText");
+      const text = message.textContent;
+      message.textContent = ""; // Clear the original text
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const span = document.createElement("span");
+        // Use a non-breaking space if the character is a space
+        span.innerHTML = char === " " ? "&nbsp;" : char;
+        // Stagger each letter's animation start
+        span.style.animationDelay = i * 0.05 + "s";
+        message.appendChild(span);
+      }
+    </script>
   </body>
 </html>

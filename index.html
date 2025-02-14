@@ -7,15 +7,24 @@
     <link rel="stylesheet" href="css/valentine.css" />
   </head>
   <body>
-    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
+    <div id="valentineQuestion"><b>WILL YOU BE MY VALENTINE?</b></div>
     <button class="answerButton" onclick="location.href='thankyou.html'">
-      Yes
+      YES!
     </button>
-    <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+    <button class="answerButton" id="noButton">
+      I no no wanna o(╥﹏╥)o
+    </button>
+    
+    <!-- Container for dynamic messages -->
+    <div id="messageContainer"></div>
+    
     <br />
     <img src="cat.gif" alt="cat asking question" class="responsive" />
 
     <script>
+      // Variable to keep track of the current message font size
+      var currentMessageFontSize = 16; // Start with a default size of 16px
+
       document
         .getElementById("noButton")
         .addEventListener("click", function () {
@@ -25,7 +34,43 @@
           var currentFontSize = parseInt(
             window.getComputedStyle(yesButton).fontSize
           );
-          yesButton.style.fontSize = currentFontSize + 10 + "px"; // Increase font size by 5px
+          yesButton.style.fontSize = currentFontSize + 20 + "px"; // Increase font size by 20px
+
+          // Array of different messages
+          var messages = [
+            "Are you sure? 😢",
+            "Think about it again! 🤔",
+            "Please say yes! 🙏",
+            "Don't make me sad! 😭",
+            "We can be happy together! 😊",
+            "I promise it'll be great! 🎉",
+            "Give us a chance! 💖",
+            "Let's make it official! 💍",
+            "You know you want to! 😉",
+            "Can't you see we're perfect together? 💑"
+          ];
+
+          // Select a random message
+          var randomMessage =
+            messages[Math.floor(Math.random() * messages.length)];
+
+          // Get the message container
+          var messageContainer = document.getElementById("messageContainer");
+          
+          // Clear any existing messages
+          messageContainer.innerHTML = "";
+
+          // Create a new paragraph element for the message
+          var messageParagraph = document.createElement("p");
+          messageParagraph.textContent = randomMessage;
+          messageParagraph.classList.add("dynamicMessage"); // Add CSS class for styling
+
+          // Increase the font size of the message
+          currentMessageFontSize += 10; // Increase font size by 2px
+          messageParagraph.style.fontSize = currentMessageFontSize + "px";
+
+          // Append the message to the container
+          messageContainer.appendChild(messageParagraph);
         });
     </script>
   </body>
