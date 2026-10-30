@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Selection</title>
     <link rel="stylesheet" href="css/food.css" />
+    <script src="js/date-plan.js"></script>
   </head>
   <body>
     <div id="foodquestion">
@@ -58,14 +59,14 @@
       </div>
       <div class="food-item">
         <img src="food/pho.jpe" alt="pho" />
-        <label><input type="checkbox" name="food" value="sushi" /> pho</label>
+        <label><input type="checkbox" name="food" value="pho" /> pho</label>
       </div>
       <div class="food-item">
         <img src="food/comtam.jpeg" alt="com tam" />
-        <label><input type="checkbox" name="food" value="sushi" /> com tam</label>
+        <label><input type="checkbox" name="food" value="com tam" /> com tam</label>
       </div>
     </div>
-    <button class="button" onclick="location.href='dessert.html'">
+    <button class="button" onclick="saveCheckedAndGo('food', 'dessert.html')">
       Continue UWU
     </button>
   </body>

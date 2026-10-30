@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activities</title>
     <link rel="stylesheet" href="css/activities.css" />
+    <script src="js/date-plan.js"></script>
   </head>
   <body>
     <div id="activityquestion"><b>What are we doing after?</b></div>
@@ -65,12 +66,12 @@
           ><input
             type="checkbox"
             name="activities"
-            value="park.jpeg"
+            value="park"
           />park</label
         >
       </div>
     </div>
-    <button class="button" onclick="location.href='lastpage.html'">
+    <button class="button" onclick="saveCheckedAndGo('activities', 'lastpage.html')">
       Last page
     </button>
   </body>
